@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] UIManager uimanager;
+    public static event System.Action UpdateHands;
     public Player p1;
     public Player p2;
     public bool p1Turn = true;
@@ -18,7 +18,11 @@ public class GameManager : MonoBehaviour
     {
         p1.DrawInitialHand();
         p2.DrawInitialHand();
-        uimanager.UpdateHands();
+        UpdateHands?.Invoke();
+    }
+    public void TryPlayCardBy(int playerId,Card card)
+    {
+
     }
 
 }
