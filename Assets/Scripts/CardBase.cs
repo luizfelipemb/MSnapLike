@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Card")]
-public class Card : ScriptableObject
+[System.Serializable]
+public class CardBase : ScriptableObject
 {
     public int id;
     public string description;

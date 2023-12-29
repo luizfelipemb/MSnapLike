@@ -12,19 +12,28 @@ public class UIManager : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private GameObject CardPrefab;
 
-    private void Start()
+    private void Awake()
     {
         GameManager.UpdateHands += UpdateHandsLocal;
     }
+
     public void UpdateHandsLocal()
     {
-        RemoveAllChildren(p1Hand.transform);
-        foreach(Card card in gameManager.p1.hand)
+        UpdateHand(p1Hand.transform, gameManager.p1.hand);
+        UpdateHand(p2Hand.transform, gameManager.p2.hand);
+    }
+
+    void UpdateHand(Transform handTransform, List<CardInGame> cards)
+    {
+        RemoveAllChildren(handTransform);
+
+        foreach (CardInGame card in cards)
         {
-            var instanceCard = Instantiate(CardPrefab, p1Hand.transform);
-            instanceCard.GetComponent<CardManager>().Spawned(card,gameManager);
+            var instanceCard = Instantiate(CardPrefab, handTransform);
+            instanceCard.GetComponent<CardManager>().Spawned(card.BaseCard, gameManager);
         }
     }
+
     void RemoveAllChildren(Transform parent)
     {
         foreach (Transform child in parent)
@@ -32,5 +41,4 @@ public class UIManager : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
-
 }

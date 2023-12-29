@@ -16,11 +16,13 @@ public class GameManager : MonoBehaviour
     }
     private void InitializeGame()
     {
+        p1.StartPlayerStuff();
+        p2.StartPlayerStuff();
         p1.DrawInitialHand();
         p2.DrawInitialHand();
         UpdateHands?.Invoke();
     }
-    public void TryPlayCardBy(int playerId,Card card)
+    public void TryPlayCardBy(int playerId,CardBase card)
     {
 
     }

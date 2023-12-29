@@ -6,8 +6,14 @@ using UnityEngine;
 public class Player
 {
     public int id;
-    public Deck deck;
-    public List<Card> hand;
+    public DeckManager deck;
+    public List<CardInGame> hand;
+
+    public void StartPlayerStuff()
+    {
+        deck.InstantiateDeck();
+        deck.AssignPlayerId(id);
+    }
 
     public void DrawInitialHand()
     {

@@ -5,5 +5,5 @@ using UnityEngine;
 [System.Serializable]
 public class LocationTile
 {
-    public Card[] cards = new NullCard[4];
+    public CardBase[] cards = new NullCard[4];
 }
