@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static event System.Action UpdateHands;
     public Player p1;
     public Player p2;
+    public Board board;
     public bool p1Turn = true;
     public int turn = 0;
 
@@ -21,6 +22,12 @@ public class GameManager : MonoBehaviour
         p1.DrawInitialHand();
         p2.DrawInitialHand();
         UpdateHands?.Invoke();
+    }
+    public Player GetPlayerById(int id)
+    {
+        if(p1.id == id)
+            return p1;
+        return p2;
     }
     public void TryPlayCardBy(int playerId,CardBase card)
     {

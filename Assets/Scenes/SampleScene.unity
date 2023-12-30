@@ -2161,6 +2161,7 @@ GameObject:
   - component: {fileID: 1612263673}
   - component: {fileID: 1612263672}
   - component: {fileID: 1612263674}
+  - component: {fileID: 1612263675}
   m_Layer: 5
   m_Name: p2Hand
   m_TagString: Untagged
@@ -2258,6 +2259,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1612263675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612263670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2afbbc6a70204aa40aab2e804b6527fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myId: 1
+  gameManager: {fileID: 1614051845}
+  CardPrefab: {fileID: 2334179559533397227, guid: f1f93fa322b229945874e5d3d5caaf4c, type: 3}
 --- !u!1 &1614051844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,7 +2284,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1614051846}
   - component: {fileID: 1614051845}
-  - component: {fileID: 1614051847}
   - component: {fileID: 1614051848}
   m_Layer: 0
   m_Name: MANAGERS
@@ -2318,22 +2333,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1614051847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614051844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de1706ce1f5c5274683ea9a0565b3639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 1614051845}
-  p1Hand: {fileID: 1793085293}
-  p2Hand: {fileID: 1612263670}
-  CardPrefab: {fileID: 2334179559533397227, guid: f1f93fa322b229945874e5d3d5caaf4c, type: 3}
 --- !u!114 &1614051848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2709,6 +2708,7 @@ GameObject:
   - component: {fileID: 1793085296}
   - component: {fileID: 1793085295}
   - component: {fileID: 1793085297}
+  - component: {fileID: 1793085298}
   m_Layer: 5
   m_Name: p1Hand
   m_TagString: Untagged
@@ -2806,6 +2806,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1793085298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793085293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2afbbc6a70204aa40aab2e804b6527fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myId: 0
+  gameManager: {fileID: 1614051845}
+  CardPrefab: {fileID: 2334179559533397227, guid: f1f93fa322b229945874e5d3d5caaf4c, type: 3}
 --- !u!224 &1810619441 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4280438035758152016, guid: f1f93fa322b229945874e5d3d5caaf4c, type: 3}
