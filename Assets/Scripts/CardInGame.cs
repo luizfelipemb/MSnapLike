@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class CardInGame
 {
+    public int id;
     public CardBase BaseCard;
     public int firstOwnerId;
 

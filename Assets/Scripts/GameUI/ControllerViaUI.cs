@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 namespace GameUI
@@ -20,23 +21,30 @@ namespace GameUI
         {
             UpdateHand(transform, gameManager.GetPlayerById(myId).hand);
         }
-        void UpdateHand(Transform handTransform, List<CardInGame> cards)
+        private void UpdateHand(Transform handTransform, List<CardInGame> cards)
         {
             RemoveAllChildren(handTransform);
 
             foreach (CardInGame card in cards)
             {
                 var instanceCard = Instantiate(CardPrefab, handTransform);
-                instanceCard.GetComponent<CardManager>().Spawned(card.BaseCard, gameManager);
+                instanceCard.GetComponent<CardManager>().Spawned(card.BaseCard);
+                instanceCard.GetComponent<Button>().
+                    onClick.AddListener(()=>CardClicked(card.id));
             }
         }
 
-        void RemoveAllChildren(Transform parent)
+        private void RemoveAllChildren(Transform parent)
         {
             foreach (Transform child in parent)
             {
                 Destroy(child.gameObject);
             }
+        }
+        private void CardClicked(int cardId)
+        {
+            Debug.Log(cardId);
+
         }
     }
 }

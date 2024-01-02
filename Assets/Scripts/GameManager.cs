@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,11 @@ public class GameManager : MonoBehaviour
     public Board board;
     public bool p1Turn = true;
     public int turn = 0;
-
+    private static int cardIdGetter = 0;
+    public static int CardIdGetter()
+    {
+        return ++cardIdGetter;
+    }
     private void Start()
     {
         InitializeGame();

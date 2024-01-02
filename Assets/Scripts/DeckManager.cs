@@ -13,7 +13,9 @@ public class DeckManager
     {
         foreach (CardBase card in cardsToBeAssigned.cards)
         {
-            DeckInGame.Add(new CardInGame(card));
+            var cardInGame = new CardInGame(card);
+            cardInGame.id = GameManager.CardIdGetter();
+            DeckInGame.Add(cardInGame);
         }
     }
     public List<CardInGame> Draw(int howManyCards)
