@@ -6,9 +6,13 @@ using UnityEngine.UI;
 
 namespace GameUI
 {
+    //Subscribes to events on GameManager to update UI according to the game state
+    //Read Actions on the UI and sends to GameManager to validate
+    //  and execute the action.
     public class ControllerViaUI : MonoBehaviour
     {
         public int myPlayerId;
+        private int cardClickedId;
         [Header("To be assigned")]
         [SerializeField] private GameManager gameManager;
         [SerializeField] private LocationUI location0;
@@ -23,20 +27,10 @@ namespace GameUI
             GameManager.ChangeTurnTo += GameManager_ChangeTurnTo; ;
         }
 
-        private void GameManager_ChangeTurnTo(TurnInfo turnInfo)
+        private void GameManager_ChangeTurnTo(int energy)
         {
-            if(turnInfo.currentPlayerID == myPlayerId)
-            {
-                //my turn
-                Debug.Log(myPlayerId + " my turn");
-            }
-            else
-            {
-                //not my turn
-                Debug.Log(myPlayerId + " not my turn");
-            }
-            if (energy)
-                energy.text = turnInfo.currentTurn.ToString();
+            if (this.energy)
+                this.energy.text = energy.ToString();
         }
 
         public void UpdateHandsLocal()
@@ -66,11 +60,19 @@ namespace GameUI
         private void CardClicked(int cardId)
         {
             Debug.Log(cardId);
-
+            cardClickedId = cardId;
+        }
+        public void LocationClicked(int locationId)
+        {
+            Debug.Log(locationId);
+            if(cardClickedId != 0)
+            {
+                gameManager.TryPlayCardBy(myPlayerId, cardClickedId, locationId);
+            }
         }
         public void EndTurnButton()
         {
-            gameManager.NexTurn();
+            gameManager.PlayerEndedTurn(myPlayerId);
         }
     }
 }

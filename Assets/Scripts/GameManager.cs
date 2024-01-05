@@ -5,20 +5,18 @@ using UnityEngine;
 [System.Serializable]
 public class TurnInfo
 {
-    public int currentPlayerID;
-    public int currentTurn;
+    public bool p1Ready;
+    public bool p2Ready;
 }
-
 
 public class GameManager : MonoBehaviour
 {
     public static event System.Action UpdateHands;
-    public static event System.Action<TurnInfo> ChangeTurnTo;
+    public static event System.Action<int> ChangeTurnTo;
     public Player p1;
     public Player p2;
     public Board board;
     public int turn = 0;
-    public int playersTurnId;
     public TurnInfo currentTurn;
     private static int cardIdGetter = 0;
     public static int CardIdGetter()
@@ -38,21 +36,26 @@ public class GameManager : MonoBehaviour
         UpdateHands?.Invoke();
         NexTurn();
     }
-    public void NexTurn()
+    private void NexTurn()
     {
-        currentTurn.currentPlayerID = SwitchPlayer(currentTurn.currentPlayerID);
-        currentTurn.currentTurn++;
-        ChangeTurnTo?.Invoke(currentTurn);
+        turn++;
+        ChangeTurnTo?.Invoke(turn);
+        currentTurn = new TurnInfo();
     }
-    public int SwitchPlayer(int currentPlayerID)
+    public void PlayerEndedTurn(int playerEndingTurn)
     {
-        if (currentPlayerID == p2.id)
+        if (playerEndingTurn == p1.id)
         {
-            return p1.id;
+            currentTurn.p1Ready = true;
         }
-        else
+        else 
         {
-            return p2.id;
+            currentTurn.p2Ready = true;
+        }
+
+        if(currentTurn.p1Ready && currentTurn.p2Ready)
+        {
+            NexTurn();
         }
     }
     public Player GetPlayerById(int id)
@@ -61,9 +64,9 @@ public class GameManager : MonoBehaviour
             return p1;
         return p2;
     }
-    public void TryPlayCardBy(int playerId,CardBase card)
+    public void TryPlayCardBy(int playerId,int cardId,int locationid)
     {
-
+        Debug.Log($"TryPlayCardBy player:{playerId}, cardid:{cardId}, locationid:{locationid}");
     }
 
 }
