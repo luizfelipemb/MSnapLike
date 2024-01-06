@@ -9,6 +9,14 @@ public class CardInGame
     public CardBase BaseCard;
     public int firstOwnerId;
 
+    public static bool operator ==(CardInGame card, int id)
+    {
+        return (card.id == id);
+    }
+    public static bool operator !=(CardInGame card, int id)
+    {
+        return !(card.id==id);
+    }
     public CardInGame(CardBase card)
     {
         this.BaseCard = card;

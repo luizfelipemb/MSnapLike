@@ -3251,7 +3251,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1614051846}
   - component: {fileID: 1614051845}
-  - component: {fileID: 1614051848}
   m_Layer: 0
   m_Name: MANAGERS
   m_TagString: Untagged
@@ -3280,7 +3279,7 @@ MonoBehaviour:
   p2:
     id: 1
     deck:
-      cardsToBeAssigned: {fileID: 11400000, guid: 04dc3c52a3f7ed44db0d336a42bba97f, type: 2}
+      cardsToBeAssigned: {fileID: 11400000, guid: be4342c53bc5c14419cf5b8f43eeb89d, type: 2}
       DeckInGame: []
     hand: []
   turn: 0
@@ -3302,20 +3301,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1614051848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614051844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8b54af31de11b4db3763c38ba06bc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AllCards:
-  - {fileID: 11400000, guid: 1d3869f17f724754b87056b7ceb2f5ef, type: 2}
 --- !u!1001 &1627985757
 PrefabInstance:
   m_ObjectHideFlags: 0

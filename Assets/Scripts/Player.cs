@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player
 {
     public int id;
+    public int energy;
     public DeckManager deck;
     public List<CardInGame> hand;
 
@@ -18,5 +19,13 @@ public class Player
     public void DrawInitialHand()
     {
         hand.AddRange(deck.Draw(3));
+    }
+    public CardLocationTypes LocateCard(int cardId)
+    {
+        if (deck.ContainsCard(cardId))
+            return CardLocationTypes.Deck;
+        else if (Utils.ContainsById(id, hand))
+            return CardLocationTypes.Hand;
+        else return CardLocationTypes.Board;
     }
 }

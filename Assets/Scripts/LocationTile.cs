@@ -6,4 +6,16 @@ using UnityEngine;
 public class LocationTile
 {
     public CardBase[] cards = new NullCard[4];
+
+    public bool HasSpace()
+    {
+        foreach (var card in cards)
+        {
+            if(card != new NullCard())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }
