@@ -24,7 +24,7 @@ public class Player
     {
         if (deck.ContainsCard(cardId))
             return CardLocationTypes.Deck;
-        else if (Utils.ContainsById(id, hand))
+        else if (Utils.ContainsById(cardId, hand))
             return CardLocationTypes.Hand;
         else return CardLocationTypes.Board;
     }
