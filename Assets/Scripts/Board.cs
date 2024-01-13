@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
 
 //idea for future: each player with its own board inside its script
 //                   + a script with events happening with each board so
@@ -12,7 +10,6 @@ public class Board
 {
     public LocationTile[] p1Side = new LocationTile[3];
     public LocationTile[] p2Side = new LocationTile[3];
-
     public bool CheckIfLocationIsAvailable(int playerId, int locationId)
     {
         if(playerId == 0)

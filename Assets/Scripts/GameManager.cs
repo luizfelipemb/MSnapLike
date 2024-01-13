@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     public static UnityEvent UpdateHands = new UnityEvent();
     public static UnityEvent<int> ChangeTurnTo = new UnityEvent<int>();
     public static UnityEvent<(int playerId, int cardId, int locationId)> CardPlayed =
-        new UnityEvent<(int playerId, int cardId, int locationId)>();
+            new UnityEvent<(int playerId, int cardId, int locationId)>();
+    public static UnityEvent<Board> BoardChanged =
+            new UnityEvent<Board>();
     public Player p1;
     public Player p2;
     public Board board;
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
         p1.energy = turn;
         p2.energy = turn;
         ChangeTurnTo?.Invoke(turn);
+        BoardChanged?.Invoke(board);
         currentTurn = new TurnInfo();
     }
     public void PlayerEndedTurn(int playerEndingTurn)
@@ -75,7 +78,8 @@ public class GameManager : MonoBehaviour
             var removedCard = owner.RemoveCardFromHand(cardId);
             board.PlaceCardInLocation(playerId,removedCard, locationid);
             //send event of it happening so UI can change accordingly
-
+            CardPlayed?.Invoke((playerId,cardId,locationid));
+            BoardChanged?.Invoke(board);
         }
     }
 

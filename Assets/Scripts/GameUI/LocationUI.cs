@@ -1,18 +1,19 @@
+using GameUI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LocationUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject CardPrefab;
+    [SerializeField] private Transform grid;
+    public void UpdateLocation(LocationTile tile)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Utils.RemoveAllChildren(grid);
+        foreach(var card in tile.cards)
+        {
+            var instanceCard = Instantiate(CardPrefab, grid);
+            instanceCard.GetComponent<CardManager>().Spawned(card.BaseCard);
+        }
     }
 }

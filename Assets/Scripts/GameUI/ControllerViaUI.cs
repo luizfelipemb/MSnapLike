@@ -24,18 +24,19 @@ namespace GameUI
 
         private void Awake()
         {
-            GameManager.UpdateHands.AddListener(GameManager_UpdateHandsLocal);
+            GameManager.UpdateHands.AddListener(GameManager_UpdateUIHands);
             GameManager.ChangeTurnTo.AddListener(GameManager_ChangeTurnTo);
             GameManager.CardPlayed.AddListener(GameManager_CardPlayed);
         }
         private void GameManager_CardPlayed((int playerId, int cardId, int locationId) eventData)
         {
-            int playerId = eventData.playerId;
-            int cardId = eventData.cardId;
-            int locationId = eventData.locationId;
-
-            // Your logic for handling the event data...
-            Debug.Log($"Card played by Player {playerId} with Card ID {cardId} at Location {locationId}");
+            if(eventData.playerId == myPlayerId)
+            {
+                GameManager_UpdateUIHands();
+            }
+            Debug.Log($"Card played by Player {eventData.playerId} " +
+                $"with Card ID {eventData.cardId} " +
+                $"at Location {eventData.locationId}");
         }
         private void GameManager_ChangeTurnTo(int energy)
         {
@@ -43,13 +44,13 @@ namespace GameUI
                 this.energy.text = energy.ToString();
         }
 
-        public void GameManager_UpdateHandsLocal()
+        public void GameManager_UpdateUIHands()
         {
             UpdateHand(transform, gameManager.GetPlayerById(myPlayerId).hand);
         }
         private void UpdateHand(Transform handTransform, List<CardInGame> cards)
         {
-            RemoveAllChildren(handTransform);
+            Utils.RemoveAllChildren(handTransform);
 
             foreach (CardInGame card in cards)
             {
@@ -60,13 +61,8 @@ namespace GameUI
             }
         }
 
-        private void RemoveAllChildren(Transform parent)
-        {
-            foreach (Transform child in parent)
-            {
-                Destroy(child.gameObject);
-            }
-        }
+        // UI interactions
+        // for future: separate into a different class
         private void CardClicked(int cardId)
         {
             Debug.Log(cardId);
