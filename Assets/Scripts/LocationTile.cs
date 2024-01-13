@@ -5,10 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class LocationTile
 {
-    private List<CardInGame> cards = new List<CardInGame>(4);
+    public List<CardInGame> cards = new List<CardInGame>(4);
 
     public bool HasSpace()
     {
         return cards.Count != 4;
+    }
+    public void PlaceCard(CardInGame card)
+    {
+        if (HasSpace())
+            cards.Add(card);
+        else
+            Debug.LogWarning("Tried placing card where already full");
     }
 }

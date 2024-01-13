@@ -15,7 +15,7 @@ public class DeckManager
         foreach (CardBase card in cardsToBeAssigned.cards)
         {
             var cardInGame = new CardInGame(card);
-            cardInGame.id = GameManager.CardIdGetter();
+            cardInGame.id = Utils.CardIdGetter();
             DeckInGame.Add(cardInGame);
         }
         Utils.ShuffleList(DeckInGame);

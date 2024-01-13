@@ -21,19 +21,29 @@ namespace GameUI
         [SerializeField] private TextMeshProUGUI energy;
         [Header("Prefabs")]
         [SerializeField] private GameObject CardPrefab;
+
         private void Awake()
         {
-            GameManager.UpdateHands += UpdateHandsLocal;
-            GameManager.ChangeTurnTo += GameManager_ChangeTurnTo; ;
+            GameManager.UpdateHands.AddListener(GameManager_UpdateHandsLocal);
+            GameManager.ChangeTurnTo.AddListener(GameManager_ChangeTurnTo);
+            GameManager.CardPlayed.AddListener(GameManager_CardPlayed);
         }
+        private void GameManager_CardPlayed((int playerId, int cardId, int locationId) eventData)
+        {
+            int playerId = eventData.playerId;
+            int cardId = eventData.cardId;
+            int locationId = eventData.locationId;
 
+            // Your logic for handling the event data...
+            Debug.Log($"Card played by Player {playerId} with Card ID {cardId} at Location {locationId}");
+        }
         private void GameManager_ChangeTurnTo(int energy)
         {
             if (this.energy)
                 this.energy.text = energy.ToString();
         }
 
-        public void UpdateHandsLocal()
+        public void GameManager_UpdateHandsLocal()
         {
             UpdateHand(transform, gameManager.GetPlayerById(myPlayerId).hand);
         }

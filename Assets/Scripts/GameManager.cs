@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public static event System.Action UpdateHands;
-    public static event System.Action<int> ChangeTurnTo;
+    public static UnityEvent UpdateHands = new UnityEvent();
+    public static UnityEvent<int> ChangeTurnTo = new UnityEvent<int>();
+    public static UnityEvent<(int playerId, int cardId, int locationId)> CardPlayed =
+        new UnityEvent<(int playerId, int cardId, int locationId)>();
     public Player p1;
     public Player p2;
     public Board board;
     public int turn = 0;
     public TurnInfo currentTurn;
-    private static int cardIdGetter = 0;
-    public static int CardIdGetter()
-    {
-        return ++cardIdGetter;
-    }
+
     private void Start()
     {
         InitializeGame();
@@ -62,22 +61,22 @@ public class GameManager : MonoBehaviour
     public void TryPlayCardBy(int playerId,int cardId,int locationid)
     {
         Debug.Log($"TryPlayCardBy player:{playerId}, cardid:{cardId}, locationid:{locationid}");
-        var owner = GetPlayerById(playerId);
-        var cardLocation = owner.LocateCard(cardId);
-        //check if card is in its hand
-        if(cardLocation == CardLocationTypes.Hand)
-        {
-            Debug.Log("Card in Hand!");
-        }
-        //check if player has energy to play
-        //ignored by now: if(owner.energy >= )
+        Player owner = GetPlayerById(playerId);
+        CardLocationTypes cardLocation = owner.LocateCard(cardId);
 
-        //check if location is available
-        if (board.CheckIfLocationIsAvailable(playerId, locationid))
+        bool cardInHand = cardLocation == CardLocationTypes.Hand;
+        bool locationAvailable = board.CheckIfLocationIsAvailable(playerId, locationid);
+        //check if player has energy to play
+            //ignored by now: if(owner.energy >= )
+
+        if(cardInHand && locationAvailable)
         {
-            Debug.Log("Location Available!");
+            Debug.Log("CardInHand AND LocationAvailable");
+            var removedCard = owner.RemoveCardFromHand(cardId);
+            board.PlaceCardInLocation(playerId,removedCard, locationid);
+            //send event of it happening so UI can change accordingly
+
         }
-        //make it happen
     }
 
 }

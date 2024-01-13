@@ -3272,16 +3272,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1:
     id: 0
+    energy: 0
     deck:
       cardsToBeAssigned: {fileID: 11400000, guid: 04dc3c52a3f7ed44db0d336a42bba97f, type: 2}
       DeckInGame: []
     hand: []
   p2:
     id: 1
+    energy: 0
     deck:
       cardsToBeAssigned: {fileID: 11400000, guid: be4342c53bc5c14419cf5b8f43eeb89d, type: 2}
       DeckInGame: []
     hand: []
+  board:
+    p1Side:
+    - cards: []
+    - cards: []
+    - cards: []
+    p2Side:
+    - cards: []
+    - cards: []
+    - cards: []
   turn: 0
   currentTurn:
     p1Ready: 0
@@ -3617,7 +3628,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1612263675}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameUI.ControllerViaUI, Assembly-CSharp
         m_MethodName: EndTurnButton
         m_Mode: 1
