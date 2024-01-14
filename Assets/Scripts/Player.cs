@@ -28,6 +28,10 @@ public class Player
             return CardLocationTypes.Hand;
         else return CardLocationTypes.Board;
     }
+    public CardInGame GetCardByIdFromHand(int id)
+    {
+        return Utils.FindById(id, hand);
+    }
     public CardInGame RemoveCardFromHand(int cardId)
     {
         var removedCard = hand.Find(card => card.id == cardId);

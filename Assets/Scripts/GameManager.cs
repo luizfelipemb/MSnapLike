@@ -5,17 +5,16 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    public static UnityEvent UpdateEnergy = new UnityEvent();
     public static UnityEvent UpdateHands = new UnityEvent();
     public static UnityEvent<int> ChangeTurnTo = new UnityEvent<int>();
-    public static UnityEvent<(int playerId, int cardId, int locationId)> CardPlayed =
-            new UnityEvent<(int playerId, int cardId, int locationId)>();
-    public static UnityEvent<Board> BoardChanged =
-            new UnityEvent<Board>();
-    public Player p1;
-    public Player p2;
-    public Board board;
-    public int turn = 0;
-    public TurnInfo currentTurn;
+    public static UnityEvent<(int playerId, int cardId, int locationId)> CardPlayed = new UnityEvent<(int playerId, int cardId, int locationId)>();
+    public static UnityEvent<Board> BoardChanged = new UnityEvent<Board>();
+    [SerializeField] private Player p1;
+    [SerializeField] private Player p2;
+    private Board board;
+    private int turn = 0;
+    private TurnInfo currentTurn;
 
     private void Start()
     {
@@ -66,20 +65,22 @@ public class GameManager : MonoBehaviour
         Debug.Log($"TryPlayCardBy player:{playerId}, cardid:{cardId}, locationid:{locationid}");
         Player owner = GetPlayerById(playerId);
         CardLocationTypes cardLocation = owner.LocateCard(cardId);
+        int cardCost = owner.GetCardByIdFromHand(cardId).BaseCard.cost;
 
         bool cardInHand = cardLocation == CardLocationTypes.Hand;
         bool locationAvailable = board.CheckIfLocationIsAvailable(playerId, locationid);
-        //check if player has energy to play
-            //ignored by now: if(owner.energy >= )
+        bool hasEnergyToPlay = owner.energy >= cardCost;
 
-        if(cardInHand && locationAvailable)
+        if (cardInHand && locationAvailable && hasEnergyToPlay)
         {
-            Debug.Log("CardInHand AND LocationAvailable");
+            Debug.Log("CardInHand AND LocationAvailable AND HasEnergyToPlay");
             var removedCard = owner.RemoveCardFromHand(cardId);
             board.PlaceCardInLocation(playerId,removedCard, locationid);
-            //send event of it happening so UI can change accordingly
+            owner.energy -= cardCost;
+
             CardPlayed?.Invoke((playerId,cardId,locationid));
             BoardChanged?.Invoke(board);
+            UpdateEnergy?.Invoke();
         }
     }
 

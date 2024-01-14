@@ -3790,9 +3790,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPlayerId: 1
   gameManager: {fileID: 1614051845}
-  location0: {fileID: 851419224}
-  location1: {fileID: 1033171589}
-  location2: {fileID: 2077432625}
   energy: {fileID: 892538087}
   CardPrefab: {fileID: 2334179559533397227, guid: f1f93fa322b229945874e5d3d5caaf4c, type: 3}
 --- !u!1 &1614051844
@@ -3832,25 +3829,12 @@ MonoBehaviour:
       DeckInGame: []
     hand: []
   p2:
-    id: 1
+    id: 0
     energy: 0
     deck:
       cardsToBeAssigned: {fileID: 11400000, guid: be4342c53bc5c14419cf5b8f43eeb89d, type: 2}
       DeckInGame: []
     hand: []
-  board:
-    p1Side:
-    - cards: []
-    - cards: []
-    - cards: []
-    p2Side:
-    - cards: []
-    - cards: []
-    - cards: []
-  turn: 0
-  currentTurn:
-    p1Ready: 0
-    p2Ready: 0
 --- !u!4 &1614051846
 Transform:
   m_ObjectHideFlags: 0
@@ -4182,7 +4166,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1612263675}
         m_TargetAssemblyTypeName: GameUI.ControllerViaUI, Assembly-CSharp
         m_MethodName: EndTurnButton
         m_Mode: 1
@@ -4534,9 +4518,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPlayerId: 0
   gameManager: {fileID: 1614051845}
-  location0: {fileID: 5539507679661878549}
-  location1: {fileID: 2064970186}
-  location2: {fileID: 410880909}
   energy: {fileID: 1048818710}
   CardPrefab: {fileID: 2334179559533397227, guid: f1f93fa322b229945874e5d3d5caaf4c, type: 3}
 --- !u!1001 &1809941821

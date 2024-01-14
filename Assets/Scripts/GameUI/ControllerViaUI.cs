@@ -15,9 +15,6 @@ namespace GameUI
         private int cardClickedId;
         [Header("To be assigned")]
         [SerializeField] private GameManager gameManager;
-        [SerializeField] private LocationUI location0;
-        [SerializeField] private LocationUI location1;
-        [SerializeField] private LocationUI location2;
         [SerializeField] private TextMeshProUGUI energy;
         [Header("Prefabs")]
         [SerializeField] private GameObject CardPrefab;
@@ -27,6 +24,7 @@ namespace GameUI
             GameManager.UpdateHands.AddListener(GameManager_UpdateUIHands);
             GameManager.ChangeTurnTo.AddListener(GameManager_ChangeTurnTo);
             GameManager.CardPlayed.AddListener(GameManager_CardPlayed);
+            GameManager.UpdateEnergy.AddListener(GameManager_UpdateUIEnergy);
         }
         private void GameManager_CardPlayed((int playerId, int cardId, int locationId) eventData)
         {
@@ -43,7 +41,10 @@ namespace GameUI
             if (this.energy)
                 this.energy.text = energy.ToString();
         }
-
+        public void GameManager_UpdateUIEnergy()
+        {
+            energy.text = gameManager.GetPlayerById(myPlayerId).energy.ToString();
+        }
         public void GameManager_UpdateUIHands()
         {
             UpdateHand(transform, gameManager.GetPlayerById(myPlayerId).hand);

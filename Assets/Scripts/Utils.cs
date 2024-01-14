@@ -22,7 +22,10 @@ public static class Utils
     {
         return list.Any(card => card.id == id);
     }
-    
+    public static CardInGame FindById(int id, List<CardInGame> list)
+    {
+        return list.Find(card => card.id == id);
+    }
     private static int cardIdGetter = 0;
     public static int CardIdGetter()
     {
