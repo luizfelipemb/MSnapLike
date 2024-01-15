@@ -8,8 +8,8 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Board
 {
-    public LocationTile[] p1Side = new LocationTile[3];
-    public LocationTile[] p2Side = new LocationTile[3];
+    private LocationTile[] p1Side = new LocationTile[3];
+    private LocationTile[] p2Side = new LocationTile[3];
     public bool CheckIfLocationIsAvailable(int playerId, int locationId)
     {
         if(playerId == 0)
@@ -28,5 +28,13 @@ public class Board
         {
             p2Side[locationId].PlaceCard(card); 
         }
+    }
+    public LocationTile GetLocationTile(int locationId)
+    {
+        if (locationId <= 2)
+        {
+            return p1Side[locationId];
+        }
+        return p2Side[locationId-3];
     }
 }

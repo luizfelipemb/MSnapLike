@@ -10,10 +10,15 @@ public class LocationUI : MonoBehaviour
     public void UpdateLocation(LocationTile tile)
     {
         Utils.RemoveAllChildren(grid);
-        foreach(var card in tile.cards)
+        bool TileHasCards = tile.cards.Count > 0;
+        if (TileHasCards)
         {
-            var instanceCard = Instantiate(CardPrefab, grid);
-            instanceCard.GetComponent<CardManager>().Spawned(card.BaseCard);
+            foreach (var card in tile.cards)
+            {
+                var instanceCard = Instantiate(CardPrefab, grid);
+                instanceCard.GetComponent<CardManager>().Spawned(card.BaseCard);
+            }
         }
+        
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player
 {
     public int id;
+    public bool endedTurn;
     public int energy;
     public DeckManager deck;
     public List<CardInGame> hand;
@@ -34,7 +35,7 @@ public class Player
     }
     public CardInGame RemoveCardFromHand(int cardId)
     {
-        var removedCard = hand.Find(card => card.id == cardId);
+        CardInGame removedCard = hand.Find(card => card.id == cardId);
         hand.Remove(removedCard);
         return removedCard;
     }

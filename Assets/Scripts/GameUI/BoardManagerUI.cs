@@ -17,11 +17,11 @@ public class BoardManagerUI : MonoBehaviour
     }
     private void GameManager_BoardChanged(Board board)
     {
-        location0?.UpdateLocation(board.p1Side[0]);
-        location1?.UpdateLocation(board.p1Side[1]);
-        location2?.UpdateLocation(board.p1Side[2]);
-        location3?.UpdateLocation(board.p2Side[0]);
-        location4?.UpdateLocation(board.p2Side[1]);
-        location5?.UpdateLocation(board.p2Side[2]);
+        location0?.UpdateLocation(board.GetLocationTile(0));
+        location1?.UpdateLocation(board.GetLocationTile(1));
+        location2?.UpdateLocation(board.GetLocationTile(2));
+        location3?.UpdateLocation(board.GetLocationTile(3));
+        location4?.UpdateLocation(board.GetLocationTile(4));
+        location5?.UpdateLocation(board.GetLocationTile(5));
     }
 }

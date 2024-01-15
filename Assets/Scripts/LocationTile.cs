@@ -5,8 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class LocationTile
 {
-    public List<CardInGame> cards = new List<CardInGame>(4);
+    public List<CardInGame> cards;
 
+    LocationTile()
+    {
+        cards = new List<CardInGame>(4);
+    }
     public bool HasSpace()
     {
         return cards.Count != 4;

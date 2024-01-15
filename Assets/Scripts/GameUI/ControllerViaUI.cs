@@ -12,7 +12,7 @@ namespace GameUI
     public class ControllerViaUI : MonoBehaviour
     {
         public int myPlayerId;
-        private int cardClickedId;
+        private int cardClickedId = -1;
         [Header("To be assigned")]
         [SerializeField] private GameManager gameManager;
         [SerializeField] private TextMeshProUGUI energy;
