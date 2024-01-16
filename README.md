@@ -16,3 +16,6 @@ The GameManager class can be seen as part of the Model, holding the game state a
 
 Event-driven Programming:
 The entire system relies heavily on events to notify and handle changes in the game state. Unity's event system is used to decouple different components and systems, promoting a more modular and maintainable design.
+
+Current Layout:
+![image](https://github.com/luizfelipemb/MSnapLike/assets/57150454/7d40bf23-b8cb-4f6f-9be3-bc503dd75c14)
