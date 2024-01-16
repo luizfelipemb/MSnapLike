@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        board = new Board();
         InitializeGame();
         NexTurn();
     }
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
     public void TryPlayCardBy(int playerId, int cardId, int locationid)
     {
         Debug.Log($"TryPlayCardBy player:{playerId}, cardid:{cardId}, locationid:{locationid}");
+        
         Player owner = GetPlayerById(playerId);
         CardLocationTypes cardLocation = owner.LocateCard(cardId);
         int cardCost = owner.GetCardByIdFromHand(cardId).BaseCard.cost;

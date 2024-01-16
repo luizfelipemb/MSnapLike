@@ -7,7 +7,7 @@ public class LocationTile
 {
     public List<CardInGame> cards;
 
-    LocationTile()
+    public LocationTile()
     {
         cards = new List<CardInGame>(4);
     }

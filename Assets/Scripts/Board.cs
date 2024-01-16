@@ -10,6 +10,14 @@ public class Board
 {
     private LocationTile[] p1Side = new LocationTile[3];
     private LocationTile[] p2Side = new LocationTile[3];
+    public Board()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            p1Side[i] = new LocationTile();
+            p2Side[i] = new LocationTile();
+        }
+    }
     public bool CheckIfLocationIsAvailable(int playerId, int locationId)
     {
         if(playerId == 0)
