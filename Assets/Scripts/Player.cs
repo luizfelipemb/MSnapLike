@@ -11,6 +11,10 @@ public class Player
     public DeckManager deck;
     public List<CardInGame> hand;
 
+    public Player()
+    {
+        hand = new List<CardInGame>();
+    }
     public void StartPlayerStuff()
     {
         deck.InstantiateDeck();
@@ -35,8 +39,9 @@ public class Player
     }
     public CardInGame RemoveCardFromHand(int cardId)
     {
-        CardInGame removedCard = hand.Find(card => card.id == cardId);
-        hand.Remove(removedCard);
+        CardInGame removedCard = hand?.Find(card => card.id == cardId);
+        if(removedCard != null)
+            hand.Remove(removedCard);
         return removedCard;
     }
 }

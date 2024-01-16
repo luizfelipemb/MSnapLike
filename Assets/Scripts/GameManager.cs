@@ -12,9 +12,16 @@ public class GameManager : MonoBehaviour
     public static UnityEvent<Board> BoardChanged = new UnityEvent<Board>();
     [SerializeField] private Player p1;
     [SerializeField] private Player p2;
+    public static int Player1Id;
+    public static int Player2Id;
     private Board board = new Board();
     private int turn = 0;
 
+    private void Awake()
+    {
+        Player1Id = p1.id;
+        Player2Id = p2.id;
+    }
     private void Start()
     {
         board = new Board();
@@ -57,21 +64,23 @@ public class GameManager : MonoBehaviour
     public void TryPlayCardBy(int playerId, int cardId, int locationid)
     {
         Debug.Log($"TryPlayCardBy player:{playerId}, cardid:{cardId}, locationid:{locationid}");
-        
+        bool PlayingAtOwnLocation = playerId == Utils.GetLocationOwner(locationid);
+        if (!PlayingAtOwnLocation)
+            return;
         Player owner = GetPlayerById(playerId);
         CardLocationTypes cardLocation = owner.LocateCard(cardId);
         int cardCost = owner.GetCardByIdFromHand(cardId).BaseCard.cost;
 
         bool hasNotEndedTurn = !owner.endedTurn;
         bool cardInHand = cardLocation == CardLocationTypes.Hand;
-        bool locationAvailable = board.CheckIfLocationIsAvailable(playerId, locationid);
+        bool locationAvailable = board.CheckIfLocationIsAvailable(locationid);
         bool hasEnergyToPlay = owner.energy >= cardCost;
 
         if (cardInHand && locationAvailable && hasEnergyToPlay && hasNotEndedTurn)
         {
             Debug.Log("CardInHand AND LocationAvailable AND HasEnergyToPlay");
             var removedCard = owner.RemoveCardFromHand(cardId);
-            board.PlaceCardInLocation(playerId, removedCard, locationid);
+            board.PlaceCardInLocation(removedCard, locationid);
             owner.energy -= cardCost;
 
             CardPlayed?.Invoke((playerId, cardId, locationid));

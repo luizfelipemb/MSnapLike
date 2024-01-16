@@ -72,7 +72,7 @@ namespace GameUI
         public void LocationClicked(int locationId)
         {
             Debug.Log(locationId);
-            if(cardClickedId != 0)
+            if(cardClickedId != -1)
             {
                 gameManager.TryPlayCardBy(myPlayerId, cardClickedId, locationId);
             }

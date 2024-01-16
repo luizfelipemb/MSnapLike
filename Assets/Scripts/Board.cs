@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 //idea for future: each player with its own board inside its script
 //                   + a script with events happening with each board so
@@ -18,31 +19,21 @@ public class Board
             p2Side[i] = new LocationTile();
         }
     }
-    public bool CheckIfLocationIsAvailable(int playerId, int locationId)
+    public bool CheckIfLocationIsAvailable(int locationId)
     {
-        if(playerId == 0)
-        {
-            return p1Side[locationId].HasSpace();
-        }
-        return p2Side[locationId].HasSpace();
+        return GetLocationTile(locationId).HasSpace();
     }
-    public void PlaceCardInLocation(int playerId, CardInGame card, int locationId)
+    public void PlaceCardInLocation(CardInGame card, int locationId)
     {
-        if (playerId == 0)
-        {
-            p1Side[locationId].PlaceCard(card);
-        }
-        else
-        {
-            p2Side[locationId].PlaceCard(card); 
-        }
+        GetLocationTile(locationId).PlaceCard(card);
     }
     public LocationTile GetLocationTile(int locationId)
     {
-        if (locationId <= 2)
+        int playerId = Utils.GetLocationOwner(locationId);
+        if (playerId == GameManager.Player1Id)
         {
             return p1Side[locationId];
         }
-        return p2Side[locationId-3];
+        return p2Side[locationId - 3];
     }
 }

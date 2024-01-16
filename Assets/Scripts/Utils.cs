@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public static class Utils
 {
@@ -37,5 +38,13 @@ public static class Utils
         {
             Object.Destroy(child.gameObject);
         }
+    }
+    public static int GetLocationOwner(int locationId)
+    {
+        if (locationId <= 2)
+        {
+            return GameManager.Player1Id;
+        }
+        return GameManager.Player2Id;
     }
 }
