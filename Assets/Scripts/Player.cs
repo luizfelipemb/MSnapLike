@@ -21,9 +21,9 @@ public class Player
         deck.AssignPlayerId(id);
     }
 
-    public void DrawInitialHand()
+    public void Draw(int numberOfCards = 1)
     {
-        hand.AddRange(deck.Draw(3));
+        hand.AddRange(deck.Draw(numberOfCards));
     }
     public CardLocationTypes LocateCard(int cardId)
     {

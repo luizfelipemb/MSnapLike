@@ -32,19 +32,22 @@ public class GameManager : MonoBehaviour
     {
         p1.StartPlayerStuff();
         p2.StartPlayerStuff();
-        p1.DrawInitialHand();
-        p2.DrawInitialHand();
+        p1.Draw(3);
+        p2.Draw(3);
         UpdateHands?.Invoke();
     }
     private void NexTurn()
     {
         turn++;
         p1.energy = turn;
-        p2.energy = turn;
-        ChangeTurnTo?.Invoke(turn);
-        BoardChanged?.Invoke(board);
+        p2.energy = turn; 
+        p1.Draw();
+        p2.Draw();
         p1.endedTurn = false;
         p2.endedTurn = false;
+        ChangeTurnTo?.Invoke(turn);
+        BoardChanged?.Invoke(board);
+        UpdateHands?.Invoke();
     }
     public void PlayerEndedTurn(int playerEndingTurn)
     {
