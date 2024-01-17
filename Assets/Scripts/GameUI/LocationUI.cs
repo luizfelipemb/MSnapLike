@@ -3,22 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocationUI : MonoBehaviour
+namespace GameUI
 {
-    [SerializeField] private GameObject CardPrefab;
-    [SerializeField] private Transform grid;
-    public void UpdateLocation(LocationTile tile)
+    public class LocationUI : MonoBehaviour
     {
-        Utils.RemoveAllChildren(grid);
-        bool TileHasCards = tile.cards.Count > 0;
-        if (TileHasCards)
+        [SerializeField] private GameObject CardPrefab;
+        [SerializeField] private Transform grid;
+        public void UpdateLocation(LocationTile tile)
         {
-            foreach (var card in tile.cards)
+            Utils.RemoveAllChildren(grid);
+            bool TileHasCards = tile.cards.Count > 0;
+            if (TileHasCards)
             {
-                var instanceCard = Instantiate(CardPrefab, grid);
-                instanceCard.GetComponent<CardManager>().Spawned(card.BaseCard);
+                foreach (var card in tile.cards)
+                {
+                    var instanceCard = Instantiate(CardPrefab, grid);
+                    instanceCard.GetComponent<CardManager>().Spawned(card.BaseCard);
+                }
             }
+
         }
-        
     }
 }
