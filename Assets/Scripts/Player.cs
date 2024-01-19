@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 [System.Serializable]
 public class Player
@@ -10,6 +8,7 @@ public class Player
     public int energy;
     public DeckManager deck;
     public List<CardInGame> hand;
+    private const int MaxCardsInHand = 7;
 
     public Player()
     {
@@ -23,7 +22,8 @@ public class Player
 
     public void Draw(int numberOfCards = 1)
     {
-        hand.AddRange(deck.Draw(numberOfCards));
+        if(hand?.Count< MaxCardsInHand)
+            hand?.AddRange(deck.Draw(numberOfCards));
     }
     public CardLocationTypes LocateCard(int cardId)
     {

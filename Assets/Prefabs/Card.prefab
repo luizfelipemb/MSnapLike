@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3864dc335b097544b9b38bffd369f57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 247174073901863977}
   cost: {fileID: 1928393825707908958}
   power: {fileID: 6536220816878958744}
   title: {fileID: 5757402052353599124}

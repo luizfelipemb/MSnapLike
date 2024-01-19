@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class LocationTile
 {
-    public List<CardInGame> cards;
+    public List<CardInGame> cards { get; private set; }
 
     public LocationTile()
     {
@@ -21,5 +21,14 @@ public class LocationTile
             cards.Add(card);
         else
             Debug.LogWarning("Tried placing card where already full");
+    }
+    public int GetPoints()
+    {
+        int points = 0;
+        foreach (CardInGame card in cards)
+        {
+            points += card.BaseCard.power;
+        }
+        return points;
     }
 }

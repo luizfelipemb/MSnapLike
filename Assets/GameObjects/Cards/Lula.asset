@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ece88279094831c419caa0463333ff14, type: 3}
-  m_Name: Elektra
+  m_Name: Lula
   m_EditorClassIdentifier: 
-  id: 0
-  description: 'On Reveal: Destroy an enemy 1-Cost card here.'
+  description: 'Ao Revelar: Rouba os pontos de todas as cartas no jogo'
   cost: 1
   power: 1
   effect: 1
+  sprite: {fileID: 21300000, guid: cae99a70c5397f746935dbbf880f81a4, type: 3}

@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("CardInHand AND LocationAvailable AND HasEnergyToPlay");
             var removedCard = owner.RemoveCardFromHand(cardId);
             board.PlaceCardInLocation(removedCard, locationid);
+            board.UpdateLocationsPoints();
             owner.energy -= cardCost;
 
             CardPlayed?.Invoke((playerId, cardId, locationid));

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ece88279094831c419caa0463333ff14, type: 3}
-  m_Name: Ant-man
+  m_Name: Bolsonaro
   m_EditorClassIdentifier: 
-  description: 'Ongoing: If your side of this location is full, +3 Power.'
+  description: 'Ao Revelar: Da clorquina (-3) para todas cartas inimigas em jogo'
   cost: 1
   power: 1
-  effect: 2
+  effect: 1
+  sprite: {fileID: 21300000, guid: a0643d72383f2d243bc1ee3b0001f9a0, type: 3}

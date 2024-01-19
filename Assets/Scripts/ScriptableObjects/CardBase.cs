@@ -11,4 +11,5 @@ public class CardBase : ScriptableObject
     public int cost;
     public int power;
     public EffectType effect;
+    public Sprite sprite;
 }
