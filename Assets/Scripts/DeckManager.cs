@@ -9,6 +9,7 @@ public class DeckManager
 
     public void InstantiateDeck()
     {
+        DeckInGame = new List<CardInGame>();
         foreach (CardBase card in cardsToBeAssigned.cards)
         {
             var cardInGame = new CardInGame(card);

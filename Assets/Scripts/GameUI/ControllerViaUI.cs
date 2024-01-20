@@ -12,8 +12,7 @@ namespace GameUI
     public class ControllerViaUI : MonoBehaviour
     {
         public int myPlayerId;
-        private const int NullCardId = -1;
-        private int cardClickedId = NullCardId;
+        private int cardClickedId = GameManager.NullId;
         [Header("To be assigned")]
         [SerializeField] private GameManager gameManager;
         [SerializeField] private TextMeshProUGUI energy;
@@ -73,16 +72,16 @@ namespace GameUI
         public void LocationClicked(int locationId)
         {
             Debug.Log(locationId);
-            if(cardClickedId != NullCardId)
+            if(cardClickedId != GameManager.NullId)
             {
                 gameManager.TryPlayCardBy(myPlayerId, cardClickedId, locationId);
-                cardClickedId = NullCardId;
+                cardClickedId = GameManager.NullId;
             }
         }
         public void EndTurnButton()
         {
             gameManager.PlayerEndedTurn(myPlayerId);
-            cardClickedId = NullCardId;
+            cardClickedId = GameManager.NullId;
         }
     }
 }

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player p2;
     public static int Player1Id;
     public static int Player2Id;
+    public static int NullId = -1;
     private Board board = new Board();
     private int turn = 0;
 
@@ -24,12 +25,17 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        board = new Board();
+        StartNewGame();
+    }
+    public void StartNewGame()
+    {
         InitializeGame();
         NexTurn();
     }
     private void InitializeGame()
     {
+        board = new Board();
+        turn = 0;
         p1.StartPlayerStuff();
         p2.StartPlayerStuff();
         p1.Draw(3);
@@ -39,6 +45,11 @@ public class GameManager : MonoBehaviour
     private void NexTurn()
     {
         turn++;
+        if (turn >= 6)
+        {
+            //End Game
+            Debug.Log(board.GetGameWinnerId());
+        }
         p1.energy = turn;
         p2.energy = turn; 
         p1.Draw();

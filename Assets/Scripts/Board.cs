@@ -7,7 +7,8 @@
 public class Board
 {
     public LocationConjuction[] locations { get; private set; } = new LocationConjuction[3];
-
+    public int GameWinnerId { get; private set; } = GameManager.NullId;
+    private (int winner0, int winner1, int winner2) winnerPerLocation;
     public Board()
     {
         for (int i = 0; i < 3; i++)
@@ -28,7 +29,12 @@ public class Board
         foreach (LocationConjuction location in locations)
         {
             location.UpdatePoints();
+            location.CalculateWinner();
         }
+    }
+    public int GetGameWinnerId()
+    {
+        return GameManager.NullId;
     }
     public LocationTile GetLocationTile(int locationId)
     {

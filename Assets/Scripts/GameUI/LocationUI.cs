@@ -20,7 +20,6 @@ namespace GameUI
                     instanceCard.GetComponent<CardManager>().Spawned(card.BaseCard);
                 }
             }
-
         }
     }
 }

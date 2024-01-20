@@ -16,6 +16,7 @@ public class Player
     }
     public void StartPlayerStuff()
     {
+        hand = new List<CardInGame>();
         deck.InstantiateDeck();
         deck.AssignPlayerId(id);
     }
