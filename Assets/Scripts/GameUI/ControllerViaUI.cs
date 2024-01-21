@@ -69,6 +69,10 @@ namespace GameUI
             Debug.Log(cardId);
             cardClickedId = cardId;
         }
+        public void RetreatClicked()
+        {
+            gameManager.PlayerRetreated(myPlayerId);
+        }
         public void LocationClicked(int locationId)
         {
             Debug.Log(locationId);

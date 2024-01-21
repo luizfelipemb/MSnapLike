@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -45,11 +46,10 @@ public class GameManager : MonoBehaviour
     }
     private void NexTurn()
     {
-        if (turn >= MaxTurns)
+        bool EndOfGame = turn >= MaxTurns;
+        if (EndOfGame)
         {
-            //End Game
             int winner = board.GetGameWinnerId();
-            Debug.Log($"Winner of the game:Player{winner}");
             GameEndedWithWinner.Invoke(winner);
         }
         turn++;
@@ -62,6 +62,13 @@ public class GameManager : MonoBehaviour
         ChangeTurnTo?.Invoke(turn);
         BoardChanged?.Invoke(board);
         UpdateHands?.Invoke();
+    }
+    public void PlayerRetreated(int playerId)
+    {
+        if(playerId == Player1Id)
+            GameEndedWithWinner.Invoke(Player2Id);
+        else
+            GameEndedWithWinner.Invoke(Player1Id);
     }
     public void PlayerEndedTurn(int playerEndingTurn)
     {
