@@ -1,12 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class WinnerMessage : MonoBehaviour
+namespace GameUI
 {
-    [SerializeField] private GameManager gameManager;
-    public void PlayAgainClick()
+    public class WinnerMessage : MonoBehaviour
     {
-        gameManager.StartNewGame();
+        [SerializeField] private TextMeshProUGUI winnerMessage;
+        public void UpdateUI(int winnerPlayer)
+        {
+            if(winnerPlayer == GameManager.NullId)
+            {
+                winnerMessage.text = $"Draw!";
+            }
+            else
+            {
+                winnerMessage.text = $"Player {winnerPlayer} Wins!";
+            }
+            
+        }
     }
 }

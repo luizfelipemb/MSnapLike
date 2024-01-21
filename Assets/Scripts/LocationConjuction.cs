@@ -29,4 +29,8 @@ public class LocationConjuction
             winnerId = GameManager.NullId;
         return winnerId;
     }
+    public int P1PointsMinusP2Points()
+    {
+        return p1Points - p2Points;
+    }
 }

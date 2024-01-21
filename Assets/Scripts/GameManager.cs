@@ -10,13 +10,14 @@ public class GameManager : MonoBehaviour
     public static UnityEvent<int> ChangeTurnTo = new UnityEvent<int>();
     public static UnityEvent<(int playerId, int cardId, int locationId)> CardPlayed = new UnityEvent<(int playerId, int cardId, int locationId)>();
     public static UnityEvent<Board> BoardChanged = new UnityEvent<Board>();
+    public static UnityEvent<int> GameEndedWithWinner = new UnityEvent<int>();
     [SerializeField] private Player p1;
     [SerializeField] private Player p2;
-    public static int Player1Id;
-    public static int Player2Id;
+    public static int Player1Id, Player2Id;
     public static int NullId = -1;
     private Board board = new Board();
     private int turn = 0;
+    private const int MaxTurns = 6;
 
     private void Awake()
     {
@@ -44,12 +45,14 @@ public class GameManager : MonoBehaviour
     }
     private void NexTurn()
     {
-        turn++;
-        if (turn >= 6)
+        if (turn >= MaxTurns)
         {
             //End Game
-            Debug.Log(board.GetGameWinnerId());
+            int winner = board.GetGameWinnerId();
+            Debug.Log($"Winner of the game:Player{winner}");
+            GameEndedWithWinner.Invoke(winner);
         }
+        turn++;
         p1.energy = turn;
         p2.energy = turn; 
         p1.Draw();
