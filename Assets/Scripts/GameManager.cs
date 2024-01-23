@@ -76,8 +76,15 @@ public class GameManager : MonoBehaviour
 
         if (p1.endedTurn && p2.endedTurn)
         {
-            NexTurn();
+            EndTurnPlaceCards();
         }
+    }
+    public void EndTurnPlaceCards()
+    {
+        board.TurnPrePlacedCards();
+        board.UpdateLocationsPoints();
+        BoardChanged?.Invoke(board);
+        NexTurn();
     }
     public Player GetPlayerById(int id)
     {
@@ -104,8 +111,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("CardInHand AND LocationAvailable AND HasEnergyToPlay");
             var removedCard = owner.RemoveCardFromHand(cardId);
-            board.PlaceCardInLocation(removedCard, locationid);
-            board.UpdateLocationsPoints();
+            board.PrePlaceCardInLocation(removedCard, locationid);
             owner.energy -= cardCost;
 
             CardPlayed?.Invoke((playerId, cardId, locationid));

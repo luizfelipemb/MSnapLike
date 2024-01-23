@@ -1,15 +1,22 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 //idea for future: each player with its own board inside its script
 //                   + a script with events happening with each board so
 //                     they can communicate.
+
 
 [System.Serializable]
 public class Board
 {
     public LocationConjuction[] locations { get; private set; } = new LocationConjuction[3];
     public int GameWinnerId { get; private set; } = GameManager.NullId;
+    public Queue<(CardInGame card, int locationId)> placeCardsQueue;
     public Board()
     {
+        placeCardsQueue = new Queue<(CardInGame card, int locationId)>();
         for (int i = 0; i < 3; i++)
         {
             locations[i] = new LocationConjuction();
@@ -19,16 +26,25 @@ public class Board
     {
         return GetLocationTile(locationId).HasSpace();
     }
-    public void PlaceCardInLocation(CardInGame card, int locationId)
-    {
-        GetLocationTile(locationId).PlaceCard(card);
-    }
+    
     public void UpdateLocationsPoints()
     {
         foreach (LocationConjuction location in locations)
         {
             location.UpdatePoints();
             location.CalculateWinner();
+        }
+    }
+    public void PrePlaceCardInLocation(CardInGame card, int locationId)
+    {
+        placeCardsQueue.Enqueue((card, locationId));
+    }
+    public void TurnPrePlacedCards()
+    {
+        foreach ((CardInGame card, int locationId) in placeCardsQueue)
+        {
+            Console.WriteLine($"Card: {card}, Location ID: {locationId}");
+            GetLocationTile(locationId).PlaceCard(card);
         }
     }
     public int GetGameWinnerId()
