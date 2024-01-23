@@ -11,7 +11,7 @@ namespace GameUI
         private GameObject winnerUIcanvas;
         private void Start()
         {
-            GameManager.GameEndedWithWinner.AddListener(GameManager_GameEndedWithWinner);
+            EventsManager.GameEndedWithWinner.AddListener(GameManager_GameEndedWithWinner);
             winnerUIcanvas = winnerUI.gameObject;
         }
         private void GameManager_GameEndedWithWinner(int winnerId)

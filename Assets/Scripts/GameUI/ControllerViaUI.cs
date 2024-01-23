@@ -21,10 +21,10 @@ namespace GameUI
 
         private void Awake()
         {
-            GameManager.UpdateHands.AddListener(GameManager_UpdateUIHands);
-            GameManager.ChangeTurnTo.AddListener(GameManager_ChangeTurnTo);
-            GameManager.CardPlayed.AddListener(GameManager_CardPlayed);
-            GameManager.UpdateEnergy.AddListener(GameManager_UpdateUIEnergy);
+            EventsManager.UpdateHands.AddListener(GameManager_UpdateUIHands);
+            EventsManager.ChangeTurnTo.AddListener(GameManager_ChangeTurnTo);
+            EventsManager.CardPlayed.AddListener(GameManager_CardPlayed);
+            EventsManager.UpdateEnergy.AddListener(GameManager_UpdateUIEnergy);
         }
         private void GameManager_CardPlayed((int playerId, int cardId, int locationId) eventData)
         {

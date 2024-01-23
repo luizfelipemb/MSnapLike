@@ -11,7 +11,7 @@ namespace GameUI
         [SerializeField] private LocationConjunctionUI locationConjunction2;
         private void Awake()
         {
-            GameManager.BoardChanged.AddListener(GameManager_BoardChanged);
+            EventsManager.BoardChanged.AddListener(GameManager_BoardChanged);
         }
         private void GameManager_BoardChanged(Board board)
         {

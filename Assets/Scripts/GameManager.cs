@@ -6,12 +6,6 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public static UnityEvent UpdateEnergy = new UnityEvent();
-    public static UnityEvent UpdateHands = new UnityEvent();
-    public static UnityEvent<int> ChangeTurnTo = new UnityEvent<int>();
-    public static UnityEvent<(int playerId, int cardId, int locationId)> CardPlayed = new UnityEvent<(int playerId, int cardId, int locationId)>();
-    public static UnityEvent<Board> BoardChanged = new UnityEvent<Board>();
-    public static UnityEvent<int> GameEndedWithWinner = new UnityEvent<int>();
     [SerializeField] private Player p1;
     [SerializeField] private Player p2;
     public static int Player1Id, Player2Id;
@@ -42,7 +36,7 @@ public class GameManager : MonoBehaviour
         p2.StartPlayerStuff();
         p1.Draw(3);
         p2.Draw(3);
-        UpdateHands?.Invoke();
+        EventsManager.UpdateHands?.Invoke();
     }
     private void NexTurn()
     {
@@ -50,7 +44,7 @@ public class GameManager : MonoBehaviour
         if (EndOfGame)
         {
             int winner = board.GetGameWinnerId();
-            GameEndedWithWinner.Invoke(winner);
+            EventsManager.GameEndedWithWinner.Invoke(winner);
         }
         turn++;
         p1.energy = turn;
@@ -59,16 +53,16 @@ public class GameManager : MonoBehaviour
         p2.Draw();
         p1.endedTurn = false;
         p2.endedTurn = false;
-        ChangeTurnTo?.Invoke(turn);
-        BoardChanged?.Invoke(board);
-        UpdateHands?.Invoke();
+        EventsManager.ChangeTurnTo?.Invoke(turn);
+        EventsManager.BoardChanged?.Invoke(board);
+        EventsManager.UpdateHands?.Invoke();
     }
     public void PlayerRetreated(int playerId)
     {
         if(playerId == Player1Id)
-            GameEndedWithWinner.Invoke(Player2Id);
+            EventsManager.GameEndedWithWinner.Invoke(Player2Id);
         else
-            GameEndedWithWinner.Invoke(Player1Id);
+            EventsManager.GameEndedWithWinner.Invoke(Player1Id);
     }
     public void PlayerEndedTurn(int playerEndingTurn)
     {
@@ -83,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         board.TurnPrePlacedCards();
         board.UpdateLocationsPoints();
-        BoardChanged?.Invoke(board);
+        EventsManager.BoardChanged?.Invoke(board);
         NexTurn();
     }
     public Player GetPlayerById(int id)
@@ -114,9 +108,9 @@ public class GameManager : MonoBehaviour
             board.PrePlaceCardInLocation(removedCard, locationid);
             owner.energy -= cardCost;
 
-            CardPlayed?.Invoke((playerId, cardId, locationid));
-            BoardChanged?.Invoke(board);
-            UpdateEnergy?.Invoke();
+            EventsManager.CardPlayed?.Invoke((playerId, cardId, locationid));
+            EventsManager.BoardChanged?.Invoke(board);
+            EventsManager.UpdateEnergy?.Invoke();
         }
     }
 
