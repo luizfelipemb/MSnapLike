@@ -1,4 +1,4 @@
-Project based on Marvel Snap done in Unity to prove my code architecture knowledge.
+Project based on Marvel Snap done in Unity to demonstrate my code architecture knowledge.
 
 Patterns Used:
 
