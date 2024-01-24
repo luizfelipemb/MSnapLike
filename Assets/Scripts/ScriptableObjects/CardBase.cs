@@ -10,6 +10,9 @@ public class CardBase : ScriptableObject
     public string description;
     public int cost;
     public int power;
-    public EffectType effect;
+    public EffectTriggers effectTrigger;
+    public EffectValidators effectValidator;
+    public EffectConsequences effectConsequence;
+    public int effectAmount;
     public Sprite sprite;
 }

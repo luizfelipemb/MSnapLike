@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
             return;
         Player owner = GetPlayerById(playerId);
         CardLocationTypes cardLocation = owner.LocateCard(cardId);
-        int cardCost = owner.GetCardByIdFromHand(cardId).BaseCard.cost;
+        int cardCost = owner.GetCardByIdFromHand(cardId).baseCard.cost;
 
         bool hasNotEndedTurn = !owner.endedTurn;
         bool cardInHand = cardLocation == CardLocationTypes.Hand;

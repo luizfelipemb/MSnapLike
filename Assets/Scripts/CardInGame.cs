@@ -2,8 +2,9 @@
 public class CardInGame
 {
     public int id;
-    public CardBase BaseCard;
+    public CardBase baseCard;
     public int firstOwnerId;
+    public Effect cardEffect;
 
     public static bool operator ==(CardInGame card, int id)
     {
@@ -15,6 +16,6 @@ public class CardInGame
     }
     public CardInGame(CardBase card)
     {
-        this.BaseCard = card;
+        this.baseCard = card;
     }
 }

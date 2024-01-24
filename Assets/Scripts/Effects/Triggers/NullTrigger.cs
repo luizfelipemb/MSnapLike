@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EffectType
+public class NullTrigger : EffectTrigger
 {
-    None,
-    OnReveal,
-    Ongoing
+
 }

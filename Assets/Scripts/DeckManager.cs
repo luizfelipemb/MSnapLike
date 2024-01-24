@@ -6,7 +6,7 @@ public class DeckManager
 {
     [SerializeField] private Deck cardsToBeAssigned;
     public List<CardInGame> DeckInGame = new List<CardInGame>();
-
+    private EffectsFactory effectsFactory = new EffectsFactory();
     public void InstantiateDeck()
     {
         DeckInGame = new List<CardInGame>();
@@ -14,6 +14,11 @@ public class DeckManager
         {
             var cardInGame = new CardInGame(card);
             cardInGame.id = Utils.CardIdGetter();
+            cardInGame.cardEffect = effectsFactory.CreateEffect(
+                card.effectTrigger,
+                card.effectValidator,
+                card.effectConsequence,
+                card.effectAmount);
             DeckInGame.Add(cardInGame);
         }
         Utils.ShuffleList(DeckInGame);
