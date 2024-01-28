@@ -4,9 +4,9 @@ using UnityEngine.Events;
 
 public abstract class EffectTrigger
 {
-    public UnityEvent TriggerEffect;
+    public UnityEvent TriggerEffect = new UnityEvent();
     public void Triggered()
     {
-        TriggerEffect.Invoke();
+        TriggerEffect?.Invoke();
     }
 }

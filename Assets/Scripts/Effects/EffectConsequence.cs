@@ -5,5 +5,5 @@ using UnityEngine;
 
 public abstract class EffectConsequence
 {
-    public abstract void ApplyConsequence(int amount = 0);
+    public abstract void ApplyConsequence(int cardId, int amount = 0);
 }

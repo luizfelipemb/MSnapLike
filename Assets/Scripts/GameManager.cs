@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static int Player1Id, Player2Id;
     public static int NullId = -1;
     private Board board = new Board();
+    private EffectsApplicator effectsApplicator;
     private int turn = 0;
     private const int MaxTurns = 6;
 
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     private void InitializeGame()
     {
         board = new Board();
+        effectsApplicator = new EffectsApplicator(board);
         turn = 0;
         p1.StartPlayerStuff();
         p2.StartPlayerStuff();

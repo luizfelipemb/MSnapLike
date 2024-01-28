@@ -15,6 +15,7 @@ public class DeckManager
             var cardInGame = new CardInGame(card);
             cardInGame.id = Utils.CardIdGetter();
             cardInGame.cardEffect = effectsFactory.CreateEffect(
+                cardInGame.id,
                 card.effectTrigger,
                 card.effectValidator,
                 card.effectConsequence,

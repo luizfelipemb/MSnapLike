@@ -3,11 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-//idea for future: each player with its own board inside its script
-//                   + a script with events happening with each board so
-//                     they can communicate.
-
-
 [System.Serializable]
 public class Board
 {
@@ -26,7 +21,6 @@ public class Board
     {
         return GetLocationTile(locationId).HasSpace();
     }
-    
     public void UpdateLocationsPoints()
     {
         foreach (LocationConjuction location in locations)
@@ -46,6 +40,7 @@ public class Board
             Console.WriteLine($"Card: {card}, Location ID: {locationId}");
             GetLocationTile(locationId).PlaceCard(card);
         }
+        placeCardsQueue.Clear();
     }
     public int GetGameWinnerId()
     {
@@ -89,5 +84,17 @@ public class Board
             return locations[locationId].p1Side;
         }
         return locations[locationId - 3].p2Side;
+    }
+    public CardInGame GetCardInGame(int id)
+    {
+        foreach (LocationConjuction location in locations)
+        {
+            CardInGame card = location.p1Side.GetCard(id) ?? location.p2Side.GetCard(id);
+            if (card != null)
+            {
+                return card;
+            }
+        }
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-
+[System.Serializable]
 public class LocationConjuction
 {
     public int p1Points { get; private set; }

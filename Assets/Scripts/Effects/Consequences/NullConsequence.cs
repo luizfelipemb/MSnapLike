@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class NullConsequence : EffectConsequence
 {
-
-    public override void ApplyConsequence(int amount = 0)
+    public override void ApplyConsequence(int cardId, int amount = 0)
     {
-
 
     }
 }

@@ -11,6 +11,10 @@ public class LocationTile
     {
         cards = new List<CardInGame>(4);
     }
+    public CardInGame GetCard(int id)
+    {
+        return cards.Find(x => x.id == id);
+    }
     public bool HasSpace()
     {
         return cards.Count != 4;

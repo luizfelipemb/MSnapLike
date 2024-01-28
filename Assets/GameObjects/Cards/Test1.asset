@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 'On Reveal: Give -3 to all cards in game'
   cost: 1
-  power: 1
-  effectTrigger: 0
+  power: 9
+  effectTrigger: 1
   effectValidator: 0
-  effectConsequence: 0
-  effectAmount: 5
-  sprite: {fileID: 21300000, guid: a0643d72383f2d243bc1ee3b0001f9a0, type: 3}
+  effectConsequence: 1
+  effectAmount: 2
+  sprite: {fileID: 21300000, guid: 1d7ef6bfae7e7414b8f8ab5f29f2f789, type: 3}
