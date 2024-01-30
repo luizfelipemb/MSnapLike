@@ -39,6 +39,7 @@ public class Board
         {
             Console.WriteLine($"Card: {card}, Location ID: {locationId}");
             GetLocationTile(locationId).PlaceCard(card);
+            EffectsApplicator.CardRevealed?.Invoke(card.id);
         }
         placeCardsQueue.Clear();
     }

@@ -11,7 +11,4 @@ public static class EventsManager
     public static UnityEvent<(int playerId, int cardId, int locationId)> CardPlayed = new UnityEvent<(int playerId, int cardId, int locationId)>();
     public static UnityEvent<Board> BoardChanged = new UnityEvent<Board>();
     public static UnityEvent<int> GameEndedWithWinner = new UnityEvent<int>();
-
-    //Effects
-    public static UnityEvent<(int cardIdAffected, int amount)> IncreasePowerOfCard = new UnityEvent<(int cardIdAffected, int amount)>();
 }

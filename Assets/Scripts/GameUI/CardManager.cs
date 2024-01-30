@@ -8,20 +8,20 @@ namespace GameUI
 {
     public class CardManager : MonoBehaviour
     {
-        private CardBase Myself;
+        private CardInGame Myself;
         [SerializeField] private Image image;
         [SerializeField] private TextMeshProUGUI cost;
         [SerializeField] private TextMeshProUGUI power;
         [SerializeField] private TextMeshProUGUI title;
         [SerializeField] private TextMeshProUGUI description;
-        public void Spawned(CardBase me)
+        public void Spawned(CardInGame me)
         {
             Myself = me;
-            image.sprite = me.sprite;
-            cost.text = Myself.cost.ToString();
-            power.text = Myself.power.ToString();
-            title.text = Myself.name.ToString();
-            description.text = Myself.description.ToString();
+            image.sprite = me.baseCard.sprite;
+            cost.text = Myself.currentCost.ToString();
+            power.text = Myself.currentPower.ToString();
+            title.text = Myself.baseCard.name.ToString();
+            description.text = Myself.baseCard.description.ToString();
         }
 
     }

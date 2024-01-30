@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class EffectValidator
 {
-    public abstract bool PassedIf();
+    public abstract bool Passed();
 }

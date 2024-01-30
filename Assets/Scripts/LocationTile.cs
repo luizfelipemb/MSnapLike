@@ -24,7 +24,6 @@ public class LocationTile
         if (HasSpace())
         {
             cards.Add(card);
-            //card.BaseCard.effectConsequence.ApplyConsequence();
         }
         else
             Debug.LogWarning("Tried placing card where already full");
@@ -34,7 +33,7 @@ public class LocationTile
         int points = 0;
         foreach (CardInGame card in cards)
         {
-            points += card.baseCard.power;
+            points += card.currentPower;
         }
         return points;
     }

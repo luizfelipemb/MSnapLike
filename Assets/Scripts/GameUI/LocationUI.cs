@@ -17,7 +17,7 @@ namespace GameUI
                 foreach (var card in tile.cards)
                 {
                     var instanceCard = Instantiate(CardPrefab, grid);
-                    instanceCard.GetComponent<CardManager>().Spawned(card.baseCard);
+                    instanceCard.GetComponent<CardManager>().Spawned(card);
                 }
             }
         }

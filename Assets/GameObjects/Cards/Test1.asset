@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece88279094831c419caa0463333ff14, type: 3}
   m_Name: Test1
   m_EditorClassIdentifier: 
-  description: 'On Reveal: Give -3 to all cards in game'
+  description: 'On Reveal: Give +2 to myself'
   cost: 1
-  power: 9
+  power: 1
   effectTrigger: 1
   effectValidator: 0
   effectConsequence: 1

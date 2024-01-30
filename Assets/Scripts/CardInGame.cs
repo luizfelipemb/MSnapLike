@@ -3,6 +3,8 @@ public class CardInGame
 {
     public int id;
     public CardBase baseCard;
+    public int currentPower;
+    public int currentCost;
     public int firstOwnerId;
     public Effect cardEffect;
 
@@ -17,5 +19,7 @@ public class CardInGame
     public CardInGame(CardBase card)
     {
         this.baseCard = card;
+        currentPower = baseCard.power;
+        currentCost = baseCard.cost;
     }
 }

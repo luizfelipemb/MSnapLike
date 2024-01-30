@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyOnOtherSideWithPowerEqualsTo : EffectValidator
 {
-    public override bool PassedIf()
+    public override bool Passed()
     {
         return true;
     }

@@ -1,44 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectsFactory
 {
-    private Dictionary<EffectTriggers, EffectTrigger> TriggersDictionary = new Dictionary<EffectTriggers, EffectTrigger>()
+    private Dictionary<EffectTriggers, Func<EffectTrigger>> TriggersDictionary = new Dictionary<EffectTriggers, Func<EffectTrigger>>()
     {
-          { EffectTriggers.Null, new NullTrigger() },
-          { EffectTriggers.OnReveal, new OnReveal() }
+        { EffectTriggers.Null, () => new NullTrigger() },
+        { EffectTriggers.OnReveal, () => new OnReveal() }
     };
-    private Dictionary<EffectValidators, EffectValidator> ValidatorDictionary = new Dictionary<EffectValidators, EffectValidator>
+
+    private Dictionary<EffectValidators, Func<EffectValidator>> ValidatorDictionary = new Dictionary<EffectValidators, Func<EffectValidator>>()
     {
-        { EffectValidators.Null, new NullValidator() }
+        { EffectValidators.Null, () => new NullValidator() }
     };
-    private Dictionary<EffectConsequences, EffectConsequence> ConsequencesDictionary = new Dictionary<EffectConsequences, EffectConsequence>()
+
+    private Dictionary<EffectConsequences, Func<EffectConsequence>> ConsequencesDictionary = new Dictionary<EffectConsequences, Func<EffectConsequence>>()
     {
-        { EffectConsequences.Null, new NullConsequence() },
-        { EffectConsequences.IncreasePower, new IncreasePower() }
+        { EffectConsequences.Null, () => new NullConsequence() },
+        { EffectConsequences.IncreasePower, () => new IncreasePower() }
     };
 
     public Effect CreateEffect(int cardId,
-                                EffectTriggers trigger, 
-                                EffectValidators effectValidator, 
+                                EffectTriggers trigger,
+                                EffectValidators effectValidator,
                                 EffectConsequences consequence,
                                 int amount = 0)
     {
-
-        if (ValidatorDictionary.TryGetValue(effectValidator, out var effectVal))
+        EffectTrigger effectTrig;
+        if (TriggersDictionary.TryGetValue(trigger, out var triggerFactory))
         {
-            // Key was found, and effectVal is set to the corresponding value
-        }
-        else
-        {
-            Debug.LogWarning($"effectValidator Key was not found!");
-            effectVal = new NullValidator();
-        }
-
-        if (TriggersDictionary.TryGetValue(trigger, out var effectTrig))
-        {
-            // Key was found, and effectTrig is set to the corresponding value
+            effectTrig = triggerFactory();
         }
         else
         {
@@ -46,15 +39,28 @@ public class EffectsFactory
             effectTrig = new NullTrigger();
         }
 
-        if (ConsequencesDictionary.TryGetValue(consequence, out var effectConseq))
+        EffectValidator effectVal;
+        if (ValidatorDictionary.TryGetValue(effectValidator, out var validatorFactory))
         {
-            // Key was found, and effectConseq is set to the corresponding value
+            effectVal = validatorFactory();
+        }
+        else
+        {
+            Debug.LogWarning($"effectVal Key was not found!");
+            effectVal = new NullValidator();
+        }
+
+        EffectConsequence effectConseq;
+        if (ConsequencesDictionary.TryGetValue(consequence, out var consequenceFactory))
+        {
+            effectConseq = consequenceFactory();
         }
         else
         {
             Debug.LogWarning($"effectConseq Key was not found!");
             effectConseq = new NullConsequence();
         }
-        return new Effect(cardId,effectTrig, effectVal, effectConseq, amount);
+
+        return new Effect(cardId, effectTrig, effectVal, effectConseq, amount);
     }
 }

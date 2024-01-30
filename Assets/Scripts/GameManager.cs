@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player p2;
     public static int Player1Id, Player2Id;
     public static int NullId = -1;
-    private Board board = new Board();
+    [SerializeField] private Board board = new Board();
     private EffectsApplicator effectsApplicator;
     private int turn = 0;
     private const int MaxTurns = 6;

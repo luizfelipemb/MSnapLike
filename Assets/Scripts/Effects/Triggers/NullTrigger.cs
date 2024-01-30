@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class NullTrigger : EffectTrigger
 {
-
+    public NullTrigger()
+    {
+        myCardId = -1;
+    }
 }

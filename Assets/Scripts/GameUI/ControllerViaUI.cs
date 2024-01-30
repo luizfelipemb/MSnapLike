@@ -56,7 +56,7 @@ namespace GameUI
             foreach (CardInGame card in cards)
             {
                 var instanceCard = Instantiate(CardPrefab, handTransform);
-                instanceCard.GetComponent<CardManager>().Spawned(card.baseCard);
+                instanceCard.GetComponent<CardManager>().Spawned(card);
                 instanceCard.GetComponent<Button>().
                     onClick.AddListener(()=>CardClicked(card.id));
             }
