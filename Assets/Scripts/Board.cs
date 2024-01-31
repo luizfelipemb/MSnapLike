@@ -8,7 +8,7 @@ public class Board
 {
     public LocationConjuction[] locations { get; private set; } = new LocationConjuction[3];
     public int GameWinnerId { get; private set; } = GameManager.NullId;
-    public Queue<(CardInGame card, int locationId)> placeCardsQueue;
+    private Queue<(CardInGame card, int locationId)> placeCardsQueue;
     public Board()
     {
         placeCardsQueue = new Queue<(CardInGame card, int locationId)>();
