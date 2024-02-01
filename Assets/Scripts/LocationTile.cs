@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -13,7 +14,17 @@ public class LocationTile
     }
     public CardInGame GetCard(int id)
     {
-        return cards.Find(x => x.id == id);
+        return cards.Find(card => card.id == id);
+    }
+    public bool HasCardById(int id)
+    {
+        return cards.Exists(card => card.id == id);
+            
+    }
+    public bool HasCardByBaseCost(int cost)
+    {
+        return cards.Exists(card => card.baseCard.cost == cost);
+
     }
     public bool HasSpace()
     {

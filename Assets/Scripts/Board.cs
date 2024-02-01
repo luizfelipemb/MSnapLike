@@ -103,4 +103,20 @@ public class Board
         if(GetCardInGame(id) != null)
             GetCardInGame(id).currentPower += amount;
     }
+    public LocationConjuction GetCardLocation(int id)
+    {
+        foreach (LocationConjuction location in locations)
+        {
+            if (location.p1Side.HasCardById(id) || location.p2Side.HasCardById(id))
+            {
+                return location;
+            }
+        }
+        return null;
+    }
+
+    public bool CardOppositeWithCost(int cardId, int cost)
+    {
+       return GetCardLocation(cardId).HasCardOppositeWithCost(cardId,cost);
+    }
 }

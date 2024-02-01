@@ -5,6 +5,6 @@ using UnityEngine;
 public enum EffectValidators
 {
     Null,
-    EnemyOnOtherSideWithPowerEqualsTo,
+    EnemyOnOtherSideWithCostEqualsTo,
     NumberOfCardsOnYourSide,
 }

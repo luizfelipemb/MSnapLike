@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ece88279094831c419caa0463333ff14, type: 3}
-  m_Name: Test3
+  m_Name: Test4
   m_EditorClassIdentifier: 
-  description: 'Ongoing: Do Y'
-  cost: 4
-  power: 4
-  effectType: {fileID: 0}
-  effectIfs: {fileID: 0}
-  effectConsequence: {fileID: 0}
-  sprite: {fileID: 21300000, guid: c4e1d20780f0a294fa8cb354cd96f262, type: 3}
+  description: 
+  cost: 1
+  power: 1
+  effectTrigger: 0
+  effectValidator: 0
+  effectConsequence: 0
+  effectAmount: 0
+  sprite: {fileID: 21300000, guid: cae99a70c5397f746935dbbf880f81a4, type: 3}

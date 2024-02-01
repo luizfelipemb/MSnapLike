@@ -8,7 +8,7 @@ public class Effect
     private EffectTrigger effectTrigger;
     private EffectValidator effectValidator;
     private EffectConsequence effectConseq;
-    private int amount;
+    private int conseqAmount;
     private int cardId;
     public Effect(
         int cardId,
@@ -21,8 +21,9 @@ public class Effect
         this.effectTrigger = effectTrigger;
         this.effectValidator = effectIf;
         this.effectConseq = effectConseq;
-        this.amount = amount;
+        this.conseqAmount = amount;
         effectTrigger.SetMyCardId(cardId);
+        effectValidator.SetMyCardId(cardId);
         this.effectTrigger?.TriggerEffect?.AddListener(Apply);
     }
 
@@ -31,7 +32,7 @@ public class Effect
         Debug.Log("Effect Apply!");
         if (effectValidator.Passed())
         {
-            effectConseq.ApplyConsequence(cardId,amount);
+            effectConseq.ApplyConsequence(cardId,conseqAmount);
         }
     }
 }

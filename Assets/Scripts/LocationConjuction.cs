@@ -33,4 +33,16 @@ public class LocationConjuction
     {
         return p1Points - p2Points;
     }
+    public bool HasCardOppositeWithCost(int cardId, int cost)
+    {
+        if (p1Side.HasCardById(cardId) && p2Side.HasCardByBaseCost(cost))
+        {
+            return true;
+        }
+        else if (p2Side.HasCardById(cardId) && p1Side.HasCardByBaseCost(cost))
+        {
+            return true;
+        }
+        return false;
+    }
 }
