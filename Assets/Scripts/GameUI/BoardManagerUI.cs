@@ -18,6 +18,30 @@ namespace GameUI
             locationConjunction0.UpdateLocationConjunction(board.locations[0]);
             locationConjunction1.UpdateLocationConjunction(board.locations[1]);
             locationConjunction2.UpdateLocationConjunction(board.locations[2]);
+
+            foreach ((CardInGame card, int locationId) in board.placeCardsQueue)
+            {
+                int playerId = Utils.GetLocationOwner(locationId);
+                bool p1Side = playerId == GameManager.Player1Id;
+                switch (locationId % 3)
+                {
+                    case 0:
+                        {
+                            locationConjunction0.AddTempCard(p1Side);
+                        }
+                        break;
+                    case 1:
+                        {
+                            locationConjunction1.AddTempCard(p1Side);
+                        }
+                        break;
+                    case 2:
+                        {
+                            locationConjunction2.AddTempCard(p1Side);
+                        }
+                        break;
+                }
+            }
         }
     }
 }

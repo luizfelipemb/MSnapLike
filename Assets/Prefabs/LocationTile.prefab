@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CardPrefab: {fileID: 2334179559533397227, guid: f1f93fa322b229945874e5d3d5caaf4c, type: 3}
+  TempCardPrefab: {fileID: 2334179559533397227, guid: 97ecc5dc98016ae44b12b13a262c81fe, type: 3}
   grid: {fileID: 4171969116077277603}
 --- !u!114 &969878182614019311
 MonoBehaviour:

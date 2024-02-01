@@ -8,7 +8,7 @@ public class Board
 {
     public LocationConjuction[] locations { get; private set; } = new LocationConjuction[3];
     public int GameWinnerId { get; private set; } = GameManager.NullId;
-    private Queue<(CardInGame card, int locationId)> placeCardsQueue;
+    public Queue<(CardInGame card, int locationId)> placeCardsQueue { get; private set; }
     public Board()
     {
         placeCardsQueue = new Queue<(CardInGame card, int locationId)>();
@@ -103,11 +103,11 @@ public class Board
         if(GetCardInGame(id) != null)
             GetCardInGame(id).currentPower += amount;
     }
-    public LocationConjuction GetCardLocation(int id)
+    public LocationConjuction GetCardLocation(int cardId)
     {
         foreach (LocationConjuction location in locations)
         {
-            if (location.p1Side.HasCardById(id) || location.p2Side.HasCardById(id))
+            if (location.p1Side.HasCardById(cardId) || location.p2Side.HasCardById(cardId))
             {
                 return location;
             }

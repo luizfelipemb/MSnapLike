@@ -7,6 +7,7 @@ namespace GameUI
     public class LocationUI : MonoBehaviour
     {
         [SerializeField] private GameObject CardPrefab;
+        [SerializeField] private GameObject TempCardPrefab;
         [SerializeField] private Transform grid;
         public void UpdateLocation(LocationTile tile)
         {
@@ -20,6 +21,10 @@ namespace GameUI
                     instanceCard.GetComponent<CardManager>().Spawned(card);
                 }
             }
+        }
+        public void AddTempCard()
+        {
+            Instantiate(TempCardPrefab, grid);
         }
     }
 }

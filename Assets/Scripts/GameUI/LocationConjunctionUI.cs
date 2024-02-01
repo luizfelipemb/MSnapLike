@@ -21,5 +21,12 @@ namespace GameUI
                 );
             
         }
+        public void AddTempCard(bool p1Side)
+        {
+            if (p1Side)
+                locationP1.AddTempCard();
+            else
+                locationP2.AddTempCard();
+        }
     }
 }
