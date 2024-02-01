@@ -7,7 +7,7 @@ public class OnReveal : EffectTrigger
 {
     public OnReveal()
     {
-        EffectsApplicator.CardRevealed.AddListener(CheckIfThisPlayed);
+        EffectEvents.CardRevealed.AddListener(CheckIfThisPlayed);
     }
     private void CheckIfThisPlayed(int cardId)
     {

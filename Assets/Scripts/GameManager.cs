@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
-
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private Player p1;
     [SerializeField] private Player p2;
+    public Player P1 { get { return p1; } private set { } }
+    public Player P2 { get { return p2; } private set { } }
+    public Board board { get; private set; } = new Board();
     public static int Player1Id, Player2Id;
     public static int NullId = -1;
-    [SerializeField] private Board board = new Board();
-    private EffectsApplicator effectsApplicator;
     private int turn = 0;
     private const int MaxTurns = 6;
-
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         Player1Id = p1.id;
         Player2Id = p2.id;
     }
@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     private void InitializeGame()
     {
         board = new Board();
-        effectsApplicator = new EffectsApplicator(board);
         turn = 0;
         p1.StartPlayerStuff();
         p2.StartPlayerStuff();

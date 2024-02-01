@@ -39,7 +39,7 @@ public class Board
         {
             Console.WriteLine($"Card: {card}, Location ID: {locationId}");
             GetLocationTile(locationId).PlaceCard(card);
-            EffectsApplicator.CardRevealed?.Invoke(card.id);
+            EffectEvents.CardRevealed?.Invoke(card.id);
         }
         placeCardsQueue.Clear();
     }
@@ -97,5 +97,10 @@ public class Board
             }
         }
         return null;
+    }
+    public void IncreasePowerOfCard(int id, int amount)
+    {   
+        if(GetCardInGame(id) != null)
+            GetCardInGame(id).currentPower += amount;
     }
 }

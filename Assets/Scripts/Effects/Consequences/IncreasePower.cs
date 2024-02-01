@@ -6,7 +6,7 @@ public class IncreasePower : EffectConsequence
 {
     public override void ApplyConsequence(int cardId, int amount = 0)
     {
-        Debug.Log($"ApplyConsequences called");
-        EffectsApplicator.IncreasePowerOfCard?.Invoke((cardId, amount));
+        Debug.Log($"Power Increased of card:{cardId} by {amount}");
+        GameManager.Instance.board.IncreasePowerOfCard(cardId, amount);
     }
 }
