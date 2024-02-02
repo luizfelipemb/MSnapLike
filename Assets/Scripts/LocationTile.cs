@@ -26,6 +26,10 @@ public class LocationTile
         return cards.Exists(card => card.baseCard.cost == cost);
 
     }
+    public int GetNumberOfCards()
+    {
+        return cards.Count;
+    }
     public bool HasSpace()
     {
         return cards.Count != 4;

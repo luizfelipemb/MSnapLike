@@ -17,9 +17,19 @@ public class Board
             locations[i] = new LocationConjuction();
         }
     }
+    private int GetLocationPreCards(int locationId)
+    {
+        int sum = 0;
+        foreach ((CardInGame card, int locationId2) in placeCardsQueue)
+        {
+            if (locationId2 == locationId)
+                sum++;
+        }
+        return sum;
+    }
     public bool CheckIfLocationIsAvailable(int locationId)
     {
-        return GetLocationTile(locationId).HasSpace();
+        return GetLocationPreCards(locationId) + GetLocationTile(locationId).GetNumberOfCards() < 4;
     }
     public void UpdateLocationsPoints()
     {
