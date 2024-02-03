@@ -4,8 +4,8 @@ public class LocationConjuction
     public int p1Points { get; private set; }
     public int p2Points { get; private set; }
 
-    public LocationTile p1Side;
-    public LocationTile p2Side;
+    public LocationTile p1Side { get; private set; }
+    public LocationTile p2Side { get; private set; }
     public int winnerId { get; private set; } = GameManager.NullId;
 
     public LocationConjuction()
@@ -32,17 +32,5 @@ public class LocationConjuction
     public int P1PointsMinusP2Points()
     {
         return p1Points - p2Points;
-    }
-    public bool HasCardOppositeWithCost(int cardId, int cost)
-    {
-        if (p1Side.HasCardById(cardId) && p2Side.HasCardByBaseCost(cost))
-        {
-            return true;
-        }
-        else if (p2Side.HasCardById(cardId) && p1Side.HasCardByBaseCost(cost))
-        {
-            return true;
-        }
-        return false;
     }
 }

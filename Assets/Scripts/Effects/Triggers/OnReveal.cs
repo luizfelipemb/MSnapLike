@@ -14,7 +14,6 @@ public class OnReveal : EffectTrigger
         if(cardId == myCardId)
         {
             base.Triggered();
-            Debug.Log("OnReveal Happened!");
         }
 
     }

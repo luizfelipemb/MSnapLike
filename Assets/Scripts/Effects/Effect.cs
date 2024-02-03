@@ -29,7 +29,6 @@ public class Effect
 
     private void Apply()
     {
-        Debug.Log("Effect Apply!");
         if (effectValidator.Passed())
         {
             effectConseq.ApplyConsequence(cardId,conseqAmount);

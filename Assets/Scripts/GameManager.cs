@@ -104,7 +104,6 @@ public class GameManager : Singleton<GameManager>
 
         if (cardInHand && locationAvailable && hasEnergyToPlay && hasNotEndedTurn)
         {
-            Debug.Log("CardInHand AND LocationAvailable AND HasEnergyToPlay");
             var removedCard = owner.RemoveCardFromHand(cardId);
             board.PrePlaceCardInLocation(removedCard, locationid);
             owner.energy -= cardCost;

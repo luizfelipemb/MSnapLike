@@ -22,6 +22,32 @@ namespace GameUI
             power.text = Myself.currentPower.ToString();
             title.text = Myself.baseCard.name.ToString();
             description.text = Myself.baseCard.description.ToString();
+
+            if (me.currentPower > me.baseCard.power)
+            {
+                power.color = Color.green;
+            }
+            else if(me.currentPower < me.baseCard.power)
+            {
+                power.color = Color.red;
+            }
+            else
+            {
+                power.color = Color.white;
+            }
+
+            if (me.currentCost > me.baseCard.cost)
+            {
+                cost.color = Color.green;
+            }
+            else if (me.currentCost < me.baseCard.cost)
+            {
+                cost.color = Color.red;
+            }
+            else
+            {
+                cost.color = Color.white;
+            }
         }
 
     }

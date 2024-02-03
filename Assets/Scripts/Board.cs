@@ -124,9 +124,4 @@ public class Board
         }
         return null;
     }
-
-    public bool CardOppositeWithCost(int cardId, int cost)
-    {
-       return GetCardLocation(cardId).HasCardOppositeWithCost(cardId,cost);
-    }
 }
