@@ -9,6 +9,9 @@ namespace GameUI
 {
     public class LocationCenterUI : MonoBehaviour
     {
+        [SerializeField] private Image centerImage;
+        [SerializeField] private TextMeshProUGUI centerTitle;
+        [SerializeField] private TextMeshProUGUI centerDescription;
         [SerializeField] private Color winningColor;
         [SerializeField] private Color losingColor;
         [SerializeField] private Image p1Hexagon;
@@ -16,8 +19,17 @@ namespace GameUI
         [SerializeField] private TextMeshProUGUI p1PointsTMP;
         [SerializeField] private TextMeshProUGUI p2PointsTMP;
 
-        public void UpdateCenter(int p1points, int p2points, int winnerId)
+        public void UpdateCenter(
+            LocationBase location, 
+            int p1points, 
+            int p2points, 
+            int winnerId)
         {
+            centerImage.sprite = location?.sprite;
+            centerTitle.text = location?.name;
+            centerTitle.outlineWidth = .5f;
+            centerDescription.outlineWidth = .3f;
+            centerDescription.text = location?.description;
             p1PointsTMP.text = p1points.ToString();
             p2PointsTMP.text = p2points.ToString();
 

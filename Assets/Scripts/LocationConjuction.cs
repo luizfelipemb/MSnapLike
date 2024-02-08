@@ -8,12 +8,17 @@ public class LocationConjuction
     public LocationTile p2Side { get; private set; }
     public int winnerId { get; private set; } = GameManager.NullId;
 
+    public LocationBase location { get; private set; }
+
     public LocationConjuction()
     {
         p1Side = new LocationTile();
         p2Side = new LocationTile();
     }
-
+    public void SetThisLocation(LocationBase location)
+    {
+        this.location = location;
+    }
     public void UpdatePoints()
     {
         p1Points = p1Side.GetPoints();

@@ -6,7 +6,7 @@ public class CardInGame
     public int currentPower;
     public int currentCost;
     public int firstOwnerId;
-    public Effect cardEffect;
+    public CardEffect cardEffect;
 
     public static bool operator ==(CardInGame card, int id)
     {

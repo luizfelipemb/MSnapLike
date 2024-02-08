@@ -5428,6 +5428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1614051846}
   - component: {fileID: 1614051845}
+  - component: {fileID: 1614051847}
   m_Layer: 0
   m_Name: MANAGERS
   m_TagString: Untagged
@@ -5478,6 +5479,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1614051847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614051844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9749f70332fced749866dbd6dc4253a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locations:
+  - {fileID: 11400000, guid: f3a2cc05d9cd1854e9005372a821d922, type: 2}
+  - {fileID: 11400000, guid: 63dcf36d6a0df704197f49fe548e3f7a, type: 2}
 --- !u!1001 &1627985757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7107,6 +7123,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3350644051789897648, guid: d27994e2f925de94ca82864f7ab0c1c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530437411886515807, guid: d27994e2f925de94ca82864f7ab0c1c5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530437411886515807, guid: d27994e2f925de94ca82864f7ab0c1c5, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530437411886515807, guid: d27994e2f925de94ca82864f7ab0c1c5, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -15,6 +15,7 @@ namespace GameUI
             locationP1.UpdateLocation(thisLocation.p1Side);
             locationP2.UpdateLocation(thisLocation.p2Side);
             locationCenter.UpdateCenter(
+                thisLocation.location,
                 thisLocation.p1Points, 
                 thisLocation.p2Points,
                 thisLocation.winnerId

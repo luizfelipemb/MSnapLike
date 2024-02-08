@@ -48,6 +48,10 @@ public class GameManager : Singleton<GameManager>
             EventsManager.GameEndedWithWinner.Invoke(winner);
         }
         turn++;
+        if (turn < 4)
+        {
+            board.RevealLocation(turn);
+        }
         p1.energy = turn;
         p2.energy = turn; 
         p1.Draw();
@@ -58,6 +62,7 @@ public class GameManager : Singleton<GameManager>
         EventsManager.BoardChanged?.Invoke(board);
         EventsManager.UpdateHands?.Invoke();
     }
+    
     public void PlayerRetreated(int playerId)
     {
         if(playerId == Player1Id)

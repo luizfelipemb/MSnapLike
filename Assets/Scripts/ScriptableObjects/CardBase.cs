@@ -11,8 +11,8 @@ public class CardBase : ScriptableObject
     public int cost;
     public int power;
     public EffectTriggers effectTrigger;
-    public EffectValidators effectValidator;
-    public EffectConsequences effectConsequence;
+    public CardEffectValidators effectValidator;
+    public CardEffectConsequences effectConsequence;
     public int effectAmount;
     public Sprite sprite;
 }

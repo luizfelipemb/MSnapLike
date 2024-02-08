@@ -27,6 +27,10 @@ public class Board
         }
         return sum;
     }
+    public void RevealLocation(int turn)
+    {
+        locations[turn - 1].SetThisLocation(LocationAssigner.Instance.GetRandomLocation());
+    }
     public bool CheckIfLocationIsAvailable(int locationId)
     {
         return GetLocationPreCards(locationId) + GetLocationTile(locationId).GetNumberOfCards() < 4;

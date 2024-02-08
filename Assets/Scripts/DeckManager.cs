@@ -6,7 +6,7 @@ public class DeckManager
 {
     [SerializeField] private Deck cardsToBeAssigned;
     public List<CardInGame> DeckInGame = new List<CardInGame>();
-    private EffectsFactory effectsFactory = new EffectsFactory();
+    private CardEffectsFactory effectsFactory = new CardEffectsFactory();
     public void InstantiateDeck()
     {
         DeckInGame = new List<CardInGame>();
